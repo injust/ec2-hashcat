@@ -10,7 +10,8 @@ bootcmd:
   # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/optimize_gpu.html
   - |
     nvidia-persistenced
-    nvidia-smi -ac 9001,2520
+    nvidia-smi -lgc 2520
+    nvidia-smi -lmc 9001
 
 write_files:
   - path: /etc/systemd/system/hashtopolis.service
