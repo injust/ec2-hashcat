@@ -15,5 +15,5 @@ phases:
         action: ExecuteBash
         inputs:
           commands:
-            - dnf -y module enable nvidia-driver:latest-dkms
+            - dnf -y module enable nvidia-driver:open-dkms
             - dnf -y install cuda-cudart-13-1 cuda-nvrtc-devel-13-1 nvidia-driver-cuda
