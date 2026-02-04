@@ -17,3 +17,9 @@ phases:
           commands:
             - dnf -y module enable nvidia-driver:open-dkms
             - dnf -y install cuda-cudart-13-0 cuda-nvrtc-devel-13-0 nvidia-driver-cuda
+
+      - name: DnfDisableRepo
+        action: ExecuteBash
+        inputs:
+          commands:
+            - dnf config-manager --disable cuda-amzn2023-x86_64
