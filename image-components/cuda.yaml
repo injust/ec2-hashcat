@@ -1,4 +1,4 @@
-# https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/amazon-linux.html
+# https://repost.aws/articles/ARwfQMxiC-QMOgWykD9mco1w/install-nvidia-gpu-driver-cuda-toolkit-nvidia-container-toolkit-on-amazon-ec2-instances-running-amazon-linux-2023-al2023
 
 schemaVersion: 1.0
 
@@ -9,17 +9,10 @@ phases:
         action: ExecuteBash
         inputs:
           commands:
-            - dnf config-manager --add-repo=https://developer.download.nvidia.com/compute/cuda/repos/amzn2023/x86_64/cuda-amzn2023.repo
+            - dnf -y install nvidia-release
 
       - name: DnfInstall
         action: ExecuteBash
         inputs:
           commands:
-            - dnf -y module enable nvidia-driver:open-dkms
             - dnf -y install cuda-cudart-13-0 cuda-nvrtc-devel-13-0 nvidia-driver-cuda
-
-      - name: DnfDisableRepo
-        action: ExecuteBash
-        inputs:
-          commands:
-            - dnf config-manager --disable cuda-amzn2023-x86_64
